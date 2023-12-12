@@ -21,7 +21,8 @@ def runCommand(command):
     if command == 2:
         return moveUp()
     if command == 3:
-        return moveDown()
+        path = os.getcwd()
+        return moveDown(path)
     if command == 4:
         path = os.getcwd()
         return print(countFiles(path))
@@ -39,10 +40,10 @@ are starting the search: '))
 def moveUp():
     os.chdir('../')
 
-def moveDown():
-    s = os.listdir()
+def moveDown(path):
+    s = os.listdir(path)
     for itr in s:
-        if os.path.isdir:
+        if os.path.isdir(path + '\\' + itr):
             print(itr)
     currentDir = os.getcwd()
     newDir = str(input('Введите имя нужного каталога: '))
@@ -56,15 +57,18 @@ def showDir():
         print('- ' + itr)
 
 def countFiles(path):
-    count = 0
-    for item in os.listdir(path):
-        item_path = os.path.join(path, item)
-        if os.path.isfile(item_path):
-            count += 1
-        elif os.path.isdir(item_path):
-            count += countFiles(item_path)  # Рекурсивный вызов для подпапки
-    return count
 
+    cnt = 0
+
+    for itr in os.listdir(path):
+        new_path = path + '\\' + itr
+        if os.path.isfile(new_path):
+            cnt += 1
+        if os.path.isdir(new_path):
+            cnt += 1
+        if os.path.isdir(new_path):
+            cnt += countFiles(new_path)
+    return cnt
 def findFiles(target, path):
     '''The function generates a list of file paths whose name contains
     the "target" parameter.
