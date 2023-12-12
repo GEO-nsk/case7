@@ -9,13 +9,23 @@ MENU = ('1. Просмотр каталога\n'
         '7. Выход из программы\n')
 
 def acceptCommand():
-    num_command = int(input('Выберите пункт меню: '))
+    '''
+
+    The function asks from user function
+
+    '''
+    num_command = int(input('Seleсt item from menu: '))
     if 0 < num_command < 8:
         return num_command
     else:
-        return 'Ошибка! Такой команды нет'
+        return 'Error! please try again.'
 
 def runCommand(command):
+    '''
+
+    The function runs selected feature
+
+    '''
     if command == 1:
         return showDir()
     if command == 2:
@@ -38,25 +48,45 @@ are starting the search: '))
         return 7
 
 def moveUp():
+    '''
+
+    The function moves uoy to rhe root directory
+
+    '''
     os.chdir('../')
 
 def moveDown(path):
+    '''
+
+    The function moves you to the selected directory
+
+    '''
     s = os.listdir(path)
     for itr in s:
         if os.path.isdir(path + '\\' + itr):
             print(itr)
     currentDir = os.getcwd()
-    newDir = str(input('Введите имя нужного каталога: '))
+    newDir = str(input('enter name of directory: '))
     rootDir = currentDir + '\\' + newDir
     os.chdir(rootDir)
 
 def showDir():
+    '''
+
+    The function shows files in the directory
+
+    '''
     Dir_now = (os.listdir())
-    print('Файлы в этом каталоге: ')
+    print('files in the directory: ')
     for itr in Dir_now:
         print('- ' + itr)
 
 def countFiles(path):
+    '''
+
+    The function shows number of files in the directory
+
+    '''
 
     cnt = 0
 
