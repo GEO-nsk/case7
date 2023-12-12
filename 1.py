@@ -1,5 +1,4 @@
 import os
-import os.path
 
 MENU = ('1. Просмотр каталога\n'
         '2. На уровень вверх\n'
@@ -10,7 +9,7 @@ MENU = ('1. Просмотр каталога\n'
         '7. Выход из программы\n')
 
 def acceptCommand():
-    num_command = int(input('Вберите пункт меню: '))
+    num_command = int(input('Выберите пункт меню: '))
     if 0 < num_command < 8:
         return num_command
     else:
@@ -29,7 +28,11 @@ def runCommand(command):
     if command == 5:
         return 5
     if command == 6:
-        return 6
+        target = str(input('Enter the string that should be included \
+in the file name: '))
+        path = str(input('Specify the path to the directory where we \
+are starting the search: '))
+        return print(findFiles(target, path))
     if command == 7:
         return 7
 
@@ -62,6 +65,24 @@ def countFiles(path):
             count += countFiles(item_path)  # Рекурсивный вызов для подпапки
     return count
 
+def findFiles(target, path):
+    '''The function generates a list of file paths whose name contains
+    the "target" parameter.
+
+    Parameters:
+    target - name of the required file
+    path - path to the directory where the function start the search
+
+    '''
+    file_list = []
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            if target in file:
+                file_list.append(os.path.join(root, file))
+    if file_list:
+        return file_list
+    else:
+        return "The file was not found."
 
 def main():
     while True:
