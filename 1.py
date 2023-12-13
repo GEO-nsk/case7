@@ -1,12 +1,12 @@
 import os
 
-MENU = ('1. Просмотр каталога\n'
-        '2. На уровень вверх\n'
-        '3. На уровень вниз\n'
-        '4. Количество файлов и каталогов\n'
-        '5. Размер текущего каталога\n'
-        '6. Поиск файла\n'
-        '7. Выход из программы\n')
+MENU = ('1. Viewing the catalog\n'
+        '2. Up a level\n'
+        '3. Down a level\n'
+        '4. Number of files and directories\n'
+        '5. The size of the current directory\n'
+        '6. File Search\n'
+        '7. Exiting the program\n')
 
 def acceptCommand():
     '''
@@ -51,7 +51,7 @@ are starting the search: '))
 def moveUp():
     '''
 
-    The function moves uoy to rhe root directory
+    The function moves you to the root directory.
 
     '''
     os.chdir('../')
@@ -59,7 +59,7 @@ def moveUp():
 def moveDown(path):
     '''
 
-    The function moves you to the selected directory
+    The function moves you to the selected directory.
 
     '''
     s = os.listdir(path)
@@ -74,7 +74,7 @@ def moveDown(path):
 def showDir():
     '''
 
-    The function shows files in the directory
+    The function shows files in the directory.
 
     '''
     Dir_now = (os.listdir())
@@ -85,7 +85,7 @@ def showDir():
 def countFiles(path):
     '''
 
-    The function shows number of files in the directory
+    The function shows number of files in the directory.
 
     '''
 
@@ -134,7 +134,7 @@ def main():
         command = acceptCommand()
         runCommand(command)
         if command == 7:
-            print('Работа программы завершена.')
+            print('The work of the program is completed.')
             break
 
 
