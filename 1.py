@@ -107,10 +107,10 @@ def findFiles(target, path):
     the "target" parameter.
     '''
     file_list = []
-    for cur_dir, dirs, files in os.walk(path):
+    for cur_path, dirs, files in os.walk(path):
         for file in files:
             if target in file:
-                file_list.append(os.path.join(cur_dir, file))
+                file_list.append(os.path.join(cur_path, file))
     if file_list:
         return file_list
     else:
