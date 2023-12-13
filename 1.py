@@ -37,7 +37,8 @@ def runCommand(command):
         path = os.getcwd()
         return print(countFiles(path))
     if command == 5:
-        return 5
+        path = os.getcwd()
+        return print(get_total_size(path))
     if command == 6:
         target = str(input('Enter the string that should be included \
 in the file name: '))
@@ -117,6 +118,14 @@ def findFiles(target, path):
         return file_list
     else:
         return "The file was not found."
+
+def get_total_size(path):
+    total_size = 0
+    for dirpath, dirnames, filenames in os.walk(path):
+        for filename in filenames:
+            file_path = os.path.join(dirpath, filename)
+            total_size += os.path.getsize(file_path)
+    return total_size
 
 def main():
     while True:
