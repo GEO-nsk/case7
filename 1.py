@@ -103,8 +103,10 @@ def countFiles(path):
 
 def findFiles(target, path):
     '''
+
     The function generates a list of file paths whose name contains
     the "target" parameter.
+    
     '''
     file_list = []
     for cur_path, dirs, files in os.walk(path):
