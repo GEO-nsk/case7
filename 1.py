@@ -100,16 +100,17 @@ def countFiles(path):
         if os.path.isdir(new_path):
             cnt += countFiles(new_path)
     return cnt
+
 def findFiles(target, path):
     '''
     The function generates a list of file paths whose name contains
     the "target" parameter.
     '''
     file_list = []
-    for root, dirs, files in os.walk(path):
+    for cur_dir, dirs, files in os.walk(path):
         for file in files:
             if target in file:
-                file_list.append(os.path.join(root, file))
+                file_list.append(os.path.join(cur_dir, file))
     if file_list:
         return file_list
     else:
